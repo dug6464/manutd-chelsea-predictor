@@ -1,0 +1,83 @@
+{
+  "feature_columns": [
+    "home_form_pts_3",
+    "home_form_pts_5",
+    "home_form_pts_10",
+    "home_win_rate_5",
+    "home_draw_rate_5",
+    "home_clean_sheets_5",
+    "home_gf_5",
+    "home_ga_5",
+    "home_gd_5",
+    "home_xg_5",
+    "home_xga_5",
+    "home_shots_target_5",
+    "home_rest_days",
+    "home_matches_14d",
+    "home_venue_win_rate_5",
+    "home_venue_gf_5",
+    "away_form_pts_3",
+    "away_form_pts_5",
+    "away_form_pts_10",
+    "away_win_rate_5",
+    "away_draw_rate_5",
+    "away_clean_sheets_5",
+    "away_gf_5",
+    "away_ga_5",
+    "away_gd_5",
+    "away_xg_5",
+    "away_xga_5",
+    "away_shots_target_5",
+    "away_rest_days",
+    "away_matches_14d",
+    "away_venue_win_rate_5",
+    "away_venue_ga_5",
+    "form_pts_5_diff",
+    "gd_5_diff",
+    "xg_5_diff",
+    "rest_diff",
+    "congestion_diff",
+    "cumulative_ppg_diff",
+    "h2h_matches_played",
+    "h2h_home_pts_last3",
+    "h2h_away_pts_last3",
+    "h2h_home_win_rate",
+    "h2h_draw_rate",
+    "h2h_avg_goals_last5",
+    "h2h_days_since_last"
+  ],
+  "target_mapping": {
+    "0": "Home Win",
+    "1": "Draw",
+    "2": "Away Win"
+  },
+  "best_model": "Logistic_Regression",
+  "test_metrics": {
+    "Logistic_Regression": {
+      "log_loss": 0.9873,
+      "brier_score": 0.5878,
+      "accuracy": 0.5408,
+      "macro_f1": 0.3923
+    },
+    "Random_Forest": {
+      "log_loss": 0.9925,
+      "brier_score": 0.5906,
+      "accuracy": 0.5342,
+      "macro_f1": 0.3944
+    },
+    "Gradient_Boosting": {
+      "log_loss": 1.0387,
+      "brier_score": 0.6133,
+      "accuracy": 0.5184,
+      "macro_f1": 0.4267
+    },
+    "Ensemble_Model": {
+      "log_loss": 0.9873,
+      "brier_score": 0.5865,
+      "accuracy": 0.5434,
+      "macro_f1": 0.4013
+    }
+  },
+  "train_samples": 1520,
+  "test_samples": 760
+}
