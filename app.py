@@ -20,7 +20,7 @@ from src.preprocessor import TEAM_CANONICAL_MAP
 
 # Page config
 st.set_page_config(
-    page_title="EPL Match Predictor | Man United vs Chelsea",
+    page_title="EPL Match Predictor",
     page_icon="⚽",
     layout="wide",
 )
@@ -53,9 +53,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<div class='main-title'>⚽ Premier League AI Match Predictor</div>", unsafe_allow_html=True)
-st.markdown("<div class='sub-title'>Predict Manchester United vs Chelsea (and all 20 EPL Clubs) with Zero-Leakage Machine Learning</div>", unsafe_allow_html=True)
-st.markdown("<div style='text-align: center; margin-bottom: 1.5rem;'><span style='background-color: #1e2530; border: 1px solid #30363d; color: #58a6ff; padding: 6px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;'>👨‍💻 Developed by <b>Tolosa</b> | <a href='https://github.com/dug6464/manutd-chelsea-predictor' target='_blank' style='color:#58a6ff; text-decoration:none;'>⭐ GitHub: @dug6464</a></span></div>", unsafe_allow_html=True)
+st.markdown("<div class='main-title'>⚽ EPL Match Predictor</div>", unsafe_allow_html=True)
+st.markdown("<div class='sub-title'>Predict Match Outcomes for all 20 Premier League Clubs with Zero-Leakage Machine Learning</div>", unsafe_allow_html=True)
 
 
 @st.cache_resource
@@ -93,15 +92,6 @@ if home_team == away_team:
 
 # Predict button
 predict_button = st.sidebar.button("🔮 Predict Match Outcome", use_container_width=True, type="primary")
-
-st.sidebar.markdown("---")
-st.sidebar.markdown("### 👨‍💻 Developer Profile")
-st.sidebar.markdown("""
-**Creator**: Tolosa  
-**GitHub**: [@dug6464](https://github.com/dug6464)  
-**Repository**: [manutd-chelsea-predictor](https://github.com/dug6464/manutd-chelsea-predictor)  
-**Model**: 3-Class Logistic Regression & HistGB
-""")
 
 # Run prediction
 with st.spinner("Analyzing point-in-time team form, xG, rest days, and head-to-head records..."):
@@ -170,10 +160,4 @@ with col_right:
     st.write(f"- **{home} Points in Last 3 H2H**: `{kf['h2h_home_pts_last3']:.0f} / 9 pts`")
 
 st.markdown("---")
-st.markdown("""
-<div style='text-align: center; color: #8b949e; padding: 10px; font-size: 0.9rem;'>
-    Developed with ❤️ by <b>Tolosa</b> • 
-    <a href='https://github.com/dug6464/manutd-chelsea-predictor' target='_blank' style='color:#58a6ff; text-decoration:none;'>GitHub: dug6464</a> • 
-    Premier League Match Outcome AI Predictor
-</div>
-""", unsafe_allow_html=True)
+st.caption("Built with zero data leakage: Point-in-time historical data from Football-Data.co.uk.")

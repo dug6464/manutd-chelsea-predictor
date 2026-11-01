@@ -163,12 +163,5 @@ Our model's Brier score of **0.5878** closely benchmarks against bookmaker impli
 
 - **Live Web Application**: [https://manutd-chelsea-predictor.streamlit.app](https://manutd-chelsea-predictor.streamlit.app)
 - **Hosted on**: Streamlit Community Cloud
-
----
-
-## 👨‍💻 Author & Developer
-
-- **Developer**: **Tolosa**
-- **GitHub**: [@dug6464](https://github.com/dug6464)
-- **Repository**: [https://github.com/dug6464/manutd-chelsea-predictor](https://github.com/dug6464/manutd-chelsea-predictor)
+- **GitHub Repository**: [https://github.com/dug6464/manutd-chelsea-predictor](https://github.com/dug6464/manutd-chelsea-predictor)
 
