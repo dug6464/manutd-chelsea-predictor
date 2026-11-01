@@ -16,7 +16,3 @@ ENV/
 .DS_Store
 Thumbs.db
 *.log
-
-# Models & Large Data (optional, keep git lightweight)
-*.joblib
-*.pkl

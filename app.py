@@ -60,13 +60,16 @@ st.markdown("<div class='sub-title'>Predict Manchester United vs Chelsea (and al
 @st.cache_resource
 def get_predictor():
     model_path = PROJECT_ROOT / "models" / "best_model.joblib"
+    if not model_path.exists():
+        from run_pipeline import run_pipeline
+        run_pipeline()
     return MatchPredictor(model_path)
 
 
 try:
     predictor = get_predictor()
 except Exception as e:
-    st.error(f"Error loading model: {e}. Please ensure model files are present.")
+    st.error(f"Error loading model: {e}")
     st.stop()
 
 # Unique list of Premier League teams
