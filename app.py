@@ -78,11 +78,8 @@ all_teams = sorted(list(set(TEAM_CANONICAL_MAP.values())))
 # Layout: Match Selector Sidebar & Columns
 st.sidebar.header("⚙️ Fixture Settings")
 
-home_default_idx = all_teams.index("Man United") if "Man United" in all_teams else 0
-away_default_idx = all_teams.index("Chelsea") if "Chelsea" in all_teams else 1
-
-home_team = st.sidebar.selectbox("🏠 Home Team", all_teams, index=home_default_idx)
-away_team = st.sidebar.selectbox("✈️ Away Team", all_teams, index=away_default_idx)
+home_team = st.sidebar.selectbox("🏠 Home Team", all_teams, index=0)
+away_team = st.sidebar.selectbox("✈️ Away Team", all_teams, index=1)
 
 match_date = st.sidebar.date_input("📅 Match Date", value=pd.Timestamp.now())
 
@@ -92,6 +89,41 @@ if home_team == away_team:
 
 # Predict button
 predict_button = st.sidebar.button("🔮 Predict Match Outcome", use_container_width=True, type="primary")
+
+if "has_run" not in st.session_state:
+    st.session_state.has_run = False
+
+if predict_button:
+    st.session_state.has_run = True
+
+if not st.session_state.has_run:
+    st.markdown("""
+    <div style='background-color: #1e2530; border: 1px solid #30363d; border-radius: 12px; padding: 2rem; text-align: center; margin-top: 1rem;'>
+        <h2 style='color: #ffffff; margin-bottom: 0.5rem;'>🏟️ Welcome to EPL Match Predictor</h2>
+        <p style='color: #8b949e; font-size: 1.05rem; max-width: 600px; margin: 0 auto 1.5rem auto;'>
+            Predict match outcomes (Home Win, Draw, Away Win) for any two English Premier League clubs using machine learning trained on 2,280 official matches with zero data leakage.
+        </p>
+        <div style='background-color: #262c36; border-radius: 8px; padding: 0.8rem 1.2rem; display: inline-block; color: #58a6ff; font-weight: 500;'>
+            👈 Select your <b>Home Team</b> and <b>Away Team</b> in the sidebar and click <b>Predict Match Outcome</b>!
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        st.markdown("### 📊 2,280+ Matches")
+        st.caption("Trained on 6 full Premier League seasons with authentic point-in-time statistics.")
+    with c2:
+        st.markdown("### ⚡ Zero Data Leakage")
+        st.caption("Strict pre-kickoff rolling form, xG proxies, rest schedules, and H2H records.")
+    with c3:
+        st.markdown("### 🎯 Fair Decimal Odds")
+        st.caption("Calculates un-margined fair market odds and projected scoreline anchors.")
+
+    st.markdown("---")
+    st.caption("Built with zero data leakage: Point-in-time historical data from Football-Data.co.uk.")
+    st.stop()
 
 # Run prediction
 with st.spinner("Analyzing point-in-time team form, xG, rest days, and head-to-head records..."):
